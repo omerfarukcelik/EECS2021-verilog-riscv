@@ -2,7 +2,7 @@
 
 This is a repository of the Verilog Pre-labs for EECS2022 which is a second year course taught in York University
 
-I had taken this course in Winter 2022 where there was a lot of content to cover in a short period of time. Including myself many students had struggles  
+I had taken this course in Winter 2022 where there was a lot of content to cover in a short period of time. Including myself many students had struggles.  
 
 Thus, I am providing my completed versions of the pre-labs with the hope that others can benefit from the struggles that I and my fellow classmates had to go through to determine how to make this work. Credit has been given to co-authors in comments.
 
