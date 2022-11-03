@@ -1,4 +1,4 @@
-# EECS2022-verilog-riscv
+# EECS2021-verilog-riscv
 
 This is a repository of the Verilog Pre-labs for EECS2022 which is a second year course taught in York University
 
