@@ -1,0 +1,7 @@
+ORG 96
+DD 12, 36, 87
+addi x1, x0, 96
+ld x4, 0(x1)
+ld x5, 8(x1)
+add x6, x4, x5
+sd x6, 16(x1)
