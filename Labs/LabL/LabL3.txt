@@ -1,0 +1,19 @@
+module LabL3;
+	reg [31:0]a, b, exp;
+	reg c;
+	wire [31:0]z;
+	yMux #(.SIZE(32)) ran(z, a, b, c);
+initial
+repeat(10)
+begin
+	a = $random;
+	b = $random;
+	c = $random % 2;
+	exp = (c==0) ? a : b;
+	#1 
+	if(exp == z)
+		$display("PASS");
+	else
+		$display("---FAIL---");
+end
+endmodule

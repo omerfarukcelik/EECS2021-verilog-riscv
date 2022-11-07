@@ -1,0 +1,23 @@
+module LabL5;
+	reg a, b, cin;
+	reg [1:0] exp;
+	wire z, cout;
+	yAdder1 add(z, cout, a, b, cin);
+	integer i, j, k;
+initial begin 
+	for(i = 0; i < 2; i = i + 1)
+		for(j = 0; j < 2; j = j + 1)
+			for(k = 0; k < 2; k = k + 1)
+				begin
+					a = i;
+					b = j;
+					cin = k;
+					exp = a + b + cin;
+					#1
+					if(exp[1]!== cout || exp[0] !== z)
+					  $display("---FAIL---");
+					else
+					  $display("PASS");
+				end
+   end
+endmodule

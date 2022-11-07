@@ -1,0 +1,28 @@
+module LabL4;
+	reg [31:0]a0, a1, a2, a3, exp;
+	reg [1:0]c;
+	wire [31:0]z;
+	yMux4to1 #(.SIZE(32)) block(z, a0, a1, a2, a3, c);
+initial
+ repeat(10)
+  begin
+	a0 = $random;
+	a1 = $random;
+	a2 = $random;
+	a3 = $random;
+	c = $random % 4;
+	if(c == 0)
+		exp = a0;
+	else if(c == 1)
+		exp = a1;
+	else if(c == 2)
+		exp = a2;
+	else
+		exp = a3;
+	#1 
+	if(z !== exp)
+		$display("---FAIL---");
+	else
+		$display("PASS");
+end
+endmodule

@@ -1,0 +1,26 @@
+module LabL7;
+	reg signed [31:0] a, b;
+	reg signed [31:0] expect;
+	reg ok;
+	reg cin;
+	wire signed [31:0] z;
+	wire signed cout;
+	yAdder add(z, cout, a, b, cin);
+initial
+	repeat(3)
+	  begin
+		a = $random;
+		b = $random;
+		cin = $random;
+		#10 expect =a + b + cin;
+		ok = 0;
+		#1;
+		if(expect === z) 
+			ok=1;
+		if(ok === 1)
+			$display("PASS");
+		else
+			$display("---FAIL---");
+
+end
+endmodule
