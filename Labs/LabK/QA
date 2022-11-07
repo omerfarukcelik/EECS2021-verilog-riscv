@@ -1,0 +1,29 @@
+Why did the program fail to capture the output of the circuit?
+There has to be #1 becuase in verilog simulations everything happens conceptually at the same time, so when writing a simulation to test our system design, we want to make changes at specific times. Where we use #n which shows an n unit time delay. Therefore, we add #1 in the begining of $display("a=%b b=%b z=%b", a, b, z); which will be an 1 unit time delay. It will look like this 	#1 $display("a=%b b=%b z=%b", a, b, z);
+
+What happens if the user forgot to specify one or more of the needed argumets?
+If the user forgot to specify one or more of the needed arguments the output z will be x whixh is unknown or don't care symbol. Same as forgotton input variable(s) as well will be unknown as shown below
+ea72 47 % vvp a.out +a=1 
+a=1 b=x z=x
+The user forgot to specify input variable b which caused to make b=x and z=x where x is unkown or don't care symbol
+
+Is it possible to detect if one or more of the needed arguments is missing?
+Yes, I have modified the code and added if and else which checks input a and b from the user if the given value if 0 or greater. If the user misses to add an argument or misses to add both of the arguments the program will display a warning message which will be printing "An argument or arguments are missing!"
+module labK;
+	reg flag;
+	reg a,b;
+	wire notOutput, lowerInput, z, tmp;
+	not my_not(notOutput, b);
+	and my_and(z, a, lowerInput);
+	assign lowerInput = notOutput;
+initial
+begin
+	flag = $value$plusargs("a=%b",a);
+	flag = $value$plusargs("b=%b",b);
+	if (a>=0 & b>=0)
+		#1 $display("a=%b b=%b z=%b", a, b, z);
+	else 
+		$display("An argument or arguments are missing!");
+	$finish;
+end
+endmodule
